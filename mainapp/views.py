@@ -7,6 +7,19 @@ from .models import Event, Venue
 from .forms import VenueForm
 # Create your views here.
 
+def search_venues(request):
+    if request.method == "POST":
+        searched = request.POST["searched"]
+        venues = Venue.objects.filter(name__contains=searched)
+
+        return render(request, 'search_venues.html',
+                     {'searched': searched,
+                      'venues': venues
+                      })
+    else:
+        return render(request, 'search_venues.html',
+                     {})
+
 def show_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     return render(request, 'show_venue.html',
