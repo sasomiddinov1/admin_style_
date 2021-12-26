@@ -19,4 +19,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls'))
 ]
+
+admin.site.site_header = 'Ish boshqaruvchining sahifasi'
+admin.site.site_title = 'Says_blog_admin'
+admin.site.index_title = 'Hush kelibsiz '

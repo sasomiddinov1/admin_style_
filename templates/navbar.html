@@ -6,40 +6,60 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' '2022' 'January'%}">January</a>
-        </li>
-                <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' '2022' 'February'%}">February</a>
-        </li>
-                <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' '2022' 'March'%}">March</a>
-        </li>
-                <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' '2022' 'April'%}">April</a>
-        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              months
+          </a>
 
-         </li>
-                <li class="nav-item">
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'home' '2022' 'January'%}">January</a>
+            <a class="dropdown-item" href="{% url 'home' '2022' 'February'%}">February</a>
+             <a class="dropdown-item" href="{% url 'home' '2022' 'March'%}">March</a>
+            <a class="dropdown-item" href="{% url 'home' '2022' 'April'%}">April</a>
+
+          </ul>
+           <li class="nav-item">
           <a class="nav-link" href="{% url 'list-events' %}">Events</a>
-        </li>
-          </li>
-                <li class="nav-item">
-          <a class="nav-link" href="{% url 'add-venue' %}">Add Venue</a>
-        </li>
-
-          </li>
+      </li>
           <li class="nav-item">
           <a class="nav-link" href="{% url 'list-venues' %}">Venues</a>
         </li>
-
-venue_list
       </ul>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Create_Info
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'add-event' %}">Add Event</a>
+              <a class="dropdown-item" href="{% url 'add-venue' %}">Add Venue</a>
+              <a class="dropdown-item" href="{% url 'venue_text' %}">Venue Text File</a>
+              <a class="dropdown-item" href="{% url 'venue_csv' %}">Venue CSV File</a>
+              <a class="dropdown-item" href="{% url 'venue_pdf' %}">Venue CSV File</a>
+            </ul>
+            </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+          {% else %}
+            <li class="nav-item">
+          <a class="nav-link" href="{% url 'register_user' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+          {% endif %}
+      </ul>
+
+
       <form class="d-flex" method="POST" action="{% url 'search-venues' %}">
           {% csrf_token %}
         <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
+  </div>
   </div>
 </nav>
