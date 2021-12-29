@@ -1,19 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h2> My Events</h2>
+<br/>
 
-<center>
-<h1>hello {{ name }}! Events for {{ month }} {{ year }}  </h1>
-As of {{ time }}
-    <br/><br/>
-    {{ cal|safe }}
-    <br/><br/>
-</center>
-    <h3>Events This Month....</h3>
-
-    {% if event_list %}
-        {% for event in event_list %}<br/>
-
+{% for event in events %}
 <div class="card">
   <div class="card-header">
     {{ event }}
@@ -52,16 +43,7 @@ As of {{ time }}
     {% endif %}
 {% endif %}
 </div>
-        {% endfor %}
-    <br/>
 
-    {% else %}
-    Sorry... There are no events this month...
-    {% endif %}
+{% endfor %}
 
-    <center>
-    <br/><br/>
-
-   Copyright (c ) {{ current_year }}
-</center>
 {% endblock content %}

@@ -2,23 +2,34 @@
 
 {% block content %}
 
-<center>
-<h1>hello {{ name }}! Events for {{ month }} {{ year }}  </h1>
-As of {{ time }}
-    <br/><br/>
-    {{ cal|safe }}
-    <br/><br/>
-</center>
-    <h3>Events This Month....</h3>
+<div class="card ">
+        <div class="card-header">
+           {% if searched %}
+                Your Searched For {{ searched }}
+            {% else %}
+                Search Events...
 
-    {% if event_list %}
-        {% for event in event_list %}<br/>
+            {% endif %}
+          </div>
 
+          <div class="card-body">
+            <form  method="POST" action="{% url 'search_events' %}">
+                  {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
+                <br/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+          </div>
+
+</div>
+
+
+        <br/>
+        {% for event in events %}
 <div class="card">
-  <div class="card-header">
-    {{ event }}
-  </div>
-  <div class="card-body">
+        <div class="card-header">
+                {{ event }}</div>
+      <div class="card-body">
     <h5 class="card-title">Venue: {{ event.venue }}  </h5>
     <p class="card-text">
 
@@ -33,15 +44,8 @@ As of {{ time }}
     <strong>Attends:</strong> {% for user in event.attends.all %} <br/>
         {{ user }}
         {% endfor %}
-
-
-
-
-
-
-
     </p>
-  </div>
+      </div>
 
  {% if user.is_authenticated %}
     {% if user == event.manager %}
@@ -51,17 +55,10 @@ As of {{ time }}
   </div>
     {% endif %}
 {% endif %}
-</div>
-        {% endfor %}
-    <br/>
+  </div>
+<br/>
+{% endfor %}
 
-    {% else %}
-    Sorry... There are no events this month...
-    {% endif %}
 
-    <center>
-    <br/><br/>
 
-   Copyright (c ) {{ current_year }}
-</center>
 {% endblock content %}

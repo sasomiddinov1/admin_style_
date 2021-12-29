@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+ {% if user.is_authenticated %}
+
 <center>
 <h1>Add Venue To Databese</h1>
     <br/><br/>
@@ -8,7 +10,7 @@
     Your Venue Was Submitted Succefully!!!
     {% else %}
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Submit" class="btn btn-secondary">
@@ -17,4 +19,13 @@
 
 
 </center>
+
+{% else %}
+<h1>
+    Sorry! You Must Be Logged In To ViewThis Page...
+</h1>
+
+ <a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
 {% endblock content %}
