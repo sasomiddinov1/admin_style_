@@ -5,6 +5,10 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="django.db.reverse" />
+          <option value="str.andswith" />
+          <option value="handlers.users.purchase.Command" />
+          <option value="keyboards.inline.choice_buttons.IKM" />
+          <option value="keyboards.inline.choice_buttons.PEAR_LINK" />
         </list>
       </option>
     </inspection_tool>
