@@ -26,11 +26,11 @@
         },
         "setuptools": {
             "hashes": [
-                "sha256:2404879cda71495fc4d5cbc445ed52fdaddf352b36e40be8dcc63147cb4edabe",
-                "sha256:68eb94073fc486091447fcb0501efd6560a0e5a1839ba249e5ff3c4c93f05f90"
+                "sha256:d0b9a8433464d5800cbe05094acf5c6d52a91bfac9b52bcfc4d41382be5d5d31",
+                "sha256:e197a19aa8ec9722928f2206f8de752def0e4c9fc6953527360d1c36d94ddb2f"
             ],
-            "markers": "python_version >= '3.7'",
-            "version": "==60.5.0"
+            "index": "pypi",
+            "version": "==65.5.1"
         }
     },
     "develop": {}
